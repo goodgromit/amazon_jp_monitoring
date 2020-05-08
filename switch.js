@@ -12,7 +12,6 @@ function check() {
     ]);
 
     let ready = false;
-    let certURL = '';
     let divs = await page.$$('div.a-row.a-spacing-mini.olpOffer');
     let count = 0;
     for (div of divs) {
