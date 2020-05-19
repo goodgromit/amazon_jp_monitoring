@@ -31,12 +31,13 @@ function check() {
       let lowprice = 100000;
       if (price) {
         let priceText = await price.evaluate((node)=> node.innerText);
-        result = result.concat('price : ' ,priceText);
-        lowprice = priceText.replace(/[^0-9][\t\n]/g, '');
-        if (lowprice < 47000) {
+        lowprice = priceText.replace(/[^0-9]/g, '');
+        if (lowprice < 40000) {
           ready = true;
         }
-        result = result.concat('\t' , ready?"true":"false");
+        priceText = priceText.replace(/[ \t\n]/g, '');
+        result = result.concat('price : ' ,priceText);
+        result = result.concat(' ' , ready?"true":"false");
       }
 
       if (condition) {
@@ -48,7 +49,7 @@ function check() {
       if (seller) {
         let sellerText = await seller.evaluate((node)=> node.innerText);
         sellerText = sellerText.replace(/[ \t\n]/g, '');
-        result = result.concat('\t\tseller : ' ,sellerText);
+        result = result.concat('\tseller : ' ,sellerText);
       }
       console.log(result);
     }
